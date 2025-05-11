@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zen Dreams (臻梦国际) - 国际艺术家发展与背景提升平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700;900&display=swap');
+        
+        body {
+            font-family: 'Noto Serif SC', serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 50%, #c026d3 100%);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .package-card {
+            transition: all 0.3s ease;
+        }
+        
+        .package-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #4f46e5; /* Changed from white to indigo for nav on white bg */
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .text-gradient {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        @media (max-width: 767px) { /* Targets screens smaller than Tailwind's 'md' breakpoint */
+            .responsive-table-container table {
+                border-collapse: collapse; /* Helps with borders in stacked view */
+            }
+            .responsive-table-container thead {
+                display: none; /* Hide the original table header on mobile */
+            }
+            .responsive-table-container tr {
+                display: block;
+                margin-bottom: 1rem;
+                border: 1px solid #e5e7eb; /* Tailwind gray-200 */
+                border-radius: 0.5rem; /* Tailwind rounded-lg */
+                box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* Tailwind shadow-md */
+                overflow: hidden; /* Ensures border-radius applies to children */
+            }
+            .responsive-table-container td {
+                display: block;
+                text-align: right; /* Aligns the data content to the right */
+                padding-left: 50%; /* Creates space for the label on the left */
+                position: relative;
+                white-space: normal !important; /* Ensures text wraps, overrides Tailwind's whitespace-nowrap */
+                padding-top: 0.75rem;
+                padding-bottom: 0.75rem;
+                padding-right: 1.5rem; /* Corresponds to px-6 */
+                border-bottom: 1px solid #f3f4f6; /* Tailwind gray-100 for subtle separation */
+            }
+            .responsive-table-container td:last-child {
+                border-bottom: none; /* No border for the last cell in a "card" */
+            }
+            .responsive-table-container td:before {
+                content: attr(data-label); /* Gets the label from the data-label attribute */
+                position: absolute;
+                left: 1.5rem; /* Corresponds to px-6 */
+                top: 0.75rem; /* Align with padding-top of td */
+                bottom: 0.75rem; /* Align with padding-bottom of td */
+                width: calc(50% - 2rem); /* Adjust width for label, considering padding */
+                padding-right: 0.5rem;
+                white-space: normal; /* Allow label to wrap if very long */
+                text-align: left;
+                font-weight: 600; /* Tailwind font-semibold */
+                color: #4b5563; /* Tailwind gray-600 for the label */
+                display: flex; /* To vertically align label text if it wraps */
+                align-items: center; /* Vertical alignment */
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-md z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <!-- Removed Zen Dreams Logo -->
+                        <span class="font-bold text-xl text-indigo-600">Zen Dreams</span>
+                    </div>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                    <a href="#about" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium">公司简介</a>
+                    <a href="#services" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium">核心服务</a>
+                    <a href="#packages" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium">服务套餐</a>
+                    <!-- Removed "免费评估" button -->
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">公司简介</a>
+                <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">核心服务</a>
+                <a href="#packages" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">服务套餐</a>
+                <!-- Removed "免费评估" button for mobile -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient pt-24 pb-32 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex items-center justify-between">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+                        您的艺术生涯<span class="text-gradient">领航者</span>
+                    </h1>
+                    <p class="text-xl mb-8 opacity-90">
+                        赋能您的国际影响力，铸就艺术辉煌。我们为全球艺术家提供一站式高端服务，精心打造具备国际影响力的个人艺术品牌。
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#about" class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition duration-300 shadow-lg">
+                            了解我们的服务
+                        </a>
+                        <!-- Removed "免费咨询" button -->
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="https://www.visitljubljana.com/assets/gallery/Kraljevi-orkester-Concertgebouw-2023.jpg" 
+                         alt="Orchestra performing" 
+                         class="rounded-xl shadow-2xl floating max-w-md w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20" style="background-image: url('https://tagvault.org/wp-content/uploads/2024/01/Facts-About-Artists-List.jpg'); background-size: cover; background-position: center; background-attachment: fixed; position: relative;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255, 255, 255, 0.92); z-index: 0;"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="position: relative; z-index: 1;">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">携手<span class="text-indigo-600">Zen Dreams</span>，铸就艺术辉煌</h2>
+                <div class="w-24 h-1 bg-indigo-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Zen Dreams (臻梦国际) 是一家专注于为全球艺术与音乐家提供一站式高端服务的专业平台，核心业务涵盖背景提升、国际赛事运营、公关媒体传播与学术资源对接。
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-md transition duration-300">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-globe text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">国际资源网络</h3>
+                    <p class="text-gray-600">
+                        凭借深厚的国际行业资源，包括国际艺术赛事评委、主流媒体专栏团队、世界顶尖音乐学府的教授顾问以及独特的文化外交渠道资源。
+                    </p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-md transition duration-300">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-bullhorn text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">品牌影响力</h3>
+                    <p class="text-gray-600">
+                        致力于帮助每一位艺术家在全球舞台上清晰发声，精心打造并显著提升具备国际影响力的个人艺术品牌。
+                    </p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-md transition duration-300">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-user-tie text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">国际艺术杰出人才打造</h3>
+                    <p class="text-gray-600">
+                        从业经验超过10年专家团队精准分析艺术家背景，量身定制发展规划与比赛参与策略，助力艺术家提升国际竞争力。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20" style="background-image: url('https://th.bing.com/th/id/R.dbb8900f68d1b77a6e5d23583215a5c0?rik=V5ZlvCJ7Yjlt0A&riu=http%3a%2f%2fwww.clickmagazine.co.uk%2fwp-content%2fuploads%2f2023%2f05%2fRoyal-Philharmonic-Orchestra-players-credit-Ben-Wright-5-scaled.jpg&ehk=eNOuaIVXkYloOUbEBQFKW%2bLVVFyoWaQDRRk%2f7p1%2bHaA%3d&risl=&pid=ImgRaw&r=0'); background-size: cover; background-position: center; background-attachment: fixed; position: relative;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(249, 250, 251, 0.92); z-index: 0;"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="position: relative; z-index: 1;">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">全方位赋能您的<span class="text-indigo-600">艺术征程</span></h2>
+                <div class="w-24 h-1 bg-indigo-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Zen Dreams (臻梦国际) 的服务体系围绕五大战略模块精心构建，旨在为您打造无懈可击的国际化艺术履历，全面提升您的全球竞争力与品牌价值。
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-md transition duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-trophy text-blue-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">国际比赛申报与获奖策略</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        我们为您提供从比赛筛选与精准定位开始的全程服务，严格根据您的年龄、艺术风格及技术水准匹配最合适的国际赛事。
+                    </p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>专业的报名材料准备</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>海外资深专家进行针对性辅导</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>赛前模拟评审与全程跟进</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-md transition duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-chalkboard-teacher text-purple-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">国际讲座与艺术沙龙安排</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        我们致力于拓展您的国际学术与交流平台，协助您获得在重要国际音乐节举办讲座的邀请。
+                    </p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>与各国大使馆、联合国附属机构合作</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>策划并举办具有影响力的文化沙龙活动</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>与世界顶尖艺术院校合作争取演讲机会</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-md transition duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-newspaper text-red-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">权威媒体与学术期刊曝光</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        我们深谙国际媒体运作，能为您争取在国际权威音乐媒体与专业期刊上发声的机会。
+                    </p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>安排深度媒体专访</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>策划并发表您的创作专栏</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>撰写具有国际视野的高质量英文公关稿件</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-md transition duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-chart-line text-green-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">个性化背景提升</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        我们提供深度的职业生涯发展咨询与精准定位服务，助您全面梳理并强化个人背景。
+                    </p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>标准化"背景潜力评估报告"</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>一对踺定制化的艺术履历优化</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>多语种专业官方网站与数字名片</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-md transition duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-users text-yellow-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">全球艺术家社群</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        我们积极为您搭建桥梁，推荐您进入享有盛誉的国际艺术基金会、参与知名的驻外艺术家项目。
+                    </p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>对接全球范围内的关键行业资源</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>资深策展人、主流唱片公司代表对接</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>有影响力的艺术家经纪人引荐</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-md transition duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-star text-indigo-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">国际艺术杰出人才打造</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        从业经验超过10年的专家团队精准分析艺术家背景，量身定制发展规划，助力艺术家提升国际竞争力与影响力。
+                    </p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>深度背景材料规划与梳理</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>长期发展路径战略性打造</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>专家团队全程顾问与支持</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Overview Table -->
+    <section class="py-16" style="background-image: url('https://tagvault.org/wp-content/uploads/2024/01/Facts-About-Artists-List.jpg'); background-size: cover; background-position: center; background-attachment: fixed; position: relative;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255, 255, 255, 0.92); z-index: 0;"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="position: relative; z-index: 1;">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">核心支柱<span class="text-indigo-600">成就卓越</span></h2>
+                <div class="w-24 h-1 bg-indigo-600 mx-auto mb-6"></div>
+            </div>
+            
+            <div class="responsive-table-container">
+                <table class="w-full divide-y divide-gray-200 shadow-lg rounded-lg overflow-hidden md:table">
+                    <thead class="bg-indigo-600 text-white">
+                        <tr>
+                            <th scope="col" class="px-6 py-4 text-left text-sm font-medium uppercase tracking-wider">模块</th>
+                            <th scope="col" class="px-6 py-4 text-left text-sm font-medium uppercase tracking-wider">核心服务内容</th>
+                            <th scope="col" class="px-6 py-4 text-left text-sm font-medium uppercase tracking-wider">核心目标</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200 md:divide-y-0">
+                        <tr class="hover:bg-gray-50 transition duration-150">
+                            <td data-label="模块" class="px-6 py-4 font-medium text-gray-900 whitespace-normal">艺术履历提升</td>
+                            <td data-label="核心服务内容" class="px-6 py-4 text-gray-600">
+                                精选比赛申报、高端演出组织、学术讲座安排、战略媒体曝光、专业作品集包装
+                            </td>
+                            <td data-label="核心目标" class="px-6 py-4 text-gray-600">
+                                快速构建并彰显您的国际影响力
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition duration-150">
+                            <td data-label="模块" class="px-6 py-4 font-medium text-gray-900 whitespace-normal">公共关系与媒体推广</td>
+                            <td data-label="核心服务内容" class="px-6 py-4 text-gray-600">
+                                国际权威媒体专访、重量级NGO推荐信获取、专业艺术新闻稿撰写与全球发表
+                            </td>
+                            <td data-label="核心目标" class="px-6 py-4 text-gray-600">
+                                显著增强您在行业内的话语权与公众信任度
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition duration-150">
+                            <td data-label="模块" class="px-6 py-4 font-medium text-gray-900 whitespace-normal">社交品牌与传播力建设</td>
+                            <td data-label="核心服务内容" class="px-6 py-4 text-gray-600">
+                                专业音乐人官网/国际社交媒体账号矩阵建立与深度运营、高质量视频素材包装与推广
+                            </td>
+                            <td data-label="核心目标" class="px-6 py-4 text-gray-600">
+                                精心打造并广泛传播您的独特艺术品牌
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section id="packages" class="py-20" style="background-image: url('https://th.bing.com/th/id/R.dbb8900f68d1b77a6e5d23583215a5c0?rik=V5ZlvCJ7Yjlt0A&riu=http%3a%2f%2fwww.clickmagazine.co.uk%2fwp-content%2fuploads%2f2023%2f05%2fRoyal-Philharmonic-Orchestra-players-credit-Ben-Wright-5-scaled.jpg&ehk=eNOuaIVXkYloOUbEBQFKW%2bLVVFyoWaQDRRk%2f7p1%2bHaA%3d&risl=&pid=ImgRaw&r=0'); background-size: cover; background-position: center; background-attachment: fixed; position: relative;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(249, 250, 251, 0.92); z-index: 0;"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="position: relative; z-index: 1;">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">标准服务套餐与<span class="text-indigo-600">定价</span></h2>
+                <div class="w-24 h-1 bg-indigo-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    我们深知每位艺术家的发展阶段与目标不尽相同，因此设计了梯度化服务套餐。所有套餐均支持30%定金 + 阶段性付款。
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Package 1 -->
+                <div class="package-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="bg-blue-600 px-6 py-4">
+                        <h3 class="text-xl font-bold text-white">新星启航计划</h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-baseline mb-4">
+                            <span class="text-3xl font-bold text-gray-900">$35,400</span>
+                            <span class="ml-1 text-gray-600">USD</span>
+                        </div>
+                        <p class="text-gray-600 mb-6">服务周期：6个月</p>
+                        
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>资深艺术顾问团队全面评估</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>个性化职业发展初步规划</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>专业技能强化培训</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>国内专业音乐比赛参赛指导</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>至少一次公开演出机会</span>
+                            </li>
+                        </ul>
+                        
+                        <!-- Removed "立即咨询" button -->
+                    </div>
+                </div>
+                
+                <!-- Package 2 -->
+                <div class="package-card bg-white rounded-xl shadow-lg overflow-hidden transform scale-105">
+                    <div class="bg-purple-600 px-6 py-4">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-bold text-white">全球舞台计划</h3>
+                            <span class="bg-yellow-400 text-purple-900 text-xs font-bold px-2 py-1 rounded-full">最受欢迎</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-baseline mb-4">
+                            <span class="text-3xl font-bold text-gray-900">$50,400</span>
+                            <span class="ml-1 text-gray-600">USD</span>
+                        </div>
+                        <p class="text-gray-600 mb-6">服务周期：12个月</p>
+                        
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>冲击国际A级音乐比赛完整策略</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>国际知名赛事评委赛前模拟评审</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>国际知名音乐院校个人讲座安排</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>至少三篇国际权威媒体深度专访</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>国际化社交媒体账号矩阵运营</span>
+                            </li>
+                        </ul>
+                        
+                        <!-- Removed "立即咨询" button -->
+                    </div>
+                </div>
+                
+                <!-- Package 3 -->
+                <div class="package-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="bg-indigo-600 px-6 py-4">
+                        <h3 class="text-xl font-bold text-white">国际通行证计划</h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-baseline mb-4">
+                            <span class="text-3xl font-bold text-gray-900">$100,800</span>
+                            <span class="ml-1 text-gray-600">USD</span>
+                        </div>
+                        <p class="text-gray-600 mb-6">服务周期：9个月</p>
+                        
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>全面背景资质逐条分析与匹配</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>至少3封高质量推荐信获取与撰写</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>国际演出与媒体组合曝光策划</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>国际音乐比赛参赛服务</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>专家团队推荐与关键材料对接</span>
+                            </li>
+                        </ul>
+                        
+                        <!-- Removed "立即咨询" button -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Premium Packages -->
+            <div class="mt-16 grid md:grid-cols-2 gap-8">
+                <!-- Package 4 -->
+                <div class="package-card bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl shadow-2xl overflow-hidden">
+                    <div class="px-6 py-4">
+                        <h3 class="text-xl font-bold text-white">卓越成就旗舰计划</h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-baseline mb-4">
+                            <span class="text-3xl font-bold text-white">$201,600+</span>
+                            <span class="ml-1 text-purple-200">USD</span>
+                        </div>
+                        <p class="text-purple-100 mb-6">服务周期：18个月</p>
+                        
+                        <ul class="space-y-3 mb-8 text-purple-100">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-yellow-300 mt-1 mr-2"></i>
+                                <span>艺术履历深度战略性打造</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-yellow-300 mt-1 mr-2"></i>
+                                <span>冲击至少2场国际A级赛事</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-yellow-300 mt-1 mr-2"></i>
+                                <span>国际学术期刊或专业媒体发表</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-yellow-300 mt-1 mr-2"></i>
+                                <span>高规格个人专场演出或作品展览</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-yellow-300 mt-1 mr-2"></i>
+                                <span>全案发展材料筹备与专家对接</span>
+                            </li>
+                        </ul>
+                        
+                        <!-- Removed "预约专属顾问" button -->
+                    </div>
+                </div>
+                
+                <!-- Package 5 -->
+                <div class="package-card bg-gradient-to-r from-gray-900 to-gray-700 rounded-xl shadow-2xl overflow-hidden">
+                    <div class="px-6 py-4">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-bold text-white">私属定制顶级孵化计划</h3>
+                            <span class="bg-yellow-400 text-gray-900 text-xs font-bold px-2 py-1 rounded-full">尊享</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-baseline mb-4">
+                            <span class="text-3xl font-bold text-white">$336,000+</span>
+                            <span class="ml-1 text-gray-300">USD</span>
+                        </div>
+                        <p class="text-gray-300 mb-6">服务周期：2年</p>
+                        
+                        <ul class="space-y-3 mb-8 text-gray-300">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-yellow-300 mt-1 mr-2"></i>
+                                <span>全维度事业战略规划与执行</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-yellow-300 mt-1 mr-2"></i>
+                                <span>个人艺术纪录片拍摄与国际发行</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-yellow-300 mt-1 mr-2"></i>
+                                <span>具有广泛社会影响力的公益活动</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-yellow-300 mt-1 mr-2"></i>
+                                <span>国际发展与长期规划无缝联动</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-yellow-300 mt-1 mr-2"></i>
+                                <span>24/7专属顾问团队支持</span>
+                            </li>
+                        </ul>
+                        
+                        <!-- Removed "预约面谈" button -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Services -->
+    <section class="py-16" style="background-image: url('https://tagvault.org/wp-content/uploads/2024/01/Facts-About-Artists-List.jpg'); background-size: cover; background-position: center; background-attachment: fixed; position: relative;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255, 255, 255, 0.92); z-index: 0;"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="position: relative; z-index: 1;">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">可单项选购的<span class="text-indigo-600">增值服务</span></h2>
+                <div class="w-24 h-1 bg-indigo-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    根据自身特定需求，精准提升特定领域的实力与影响力
+                </p>
+            </div>
+            
+            <div class="responsive-table-container">
+                <table class="w-full divide-y divide-gray-200 shadow-lg rounded-lg overflow-hidden md:table">
+                    <thead class="bg-indigo-600 text-white">
+                        <tr>
+                            <th scope="col" class="px-6 py-4 text-left text-sm font-medium uppercase tracking-wider">服务项目</th>
+                            <th scope="col" class="px-6 py-4 text-left text-sm font-medium uppercase tracking-wider">服务说明与核心价值</th>
+                            <th scope="col" class="px-6 py-4 text-left text-sm font-medium uppercase tracking-wider">单价（USD）</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200 md:divide-y-0">
+                        <tr class="hover:bg-gray-50 transition duration-150">
+                            <td data-label="服务项目" class="px-6 py-4 font-medium text-gray-900 whitespace-normal">国际音乐比赛参赛服务</td>
+                            <td data-label="服务说明与核心价值" class="px-6 py-4 text-gray-600">
+                                包含赛事策略匹配、专业报名协助、个性化陪赛辅导，最大化获奖几率（专业服务费。差旅、住宿及第三方执行费用另计。）
+                            </td>
+                            <td data-label="单价（USD）" class="px-6 py-4 whitespace-nowrap text-gray-600 font-medium">
+                                $2970-7700 USD / 次
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition duration-150">
+                            <td data-label="服务项目" class="px-6 py-4 font-medium text-gray-900 whitespace-normal">举办个人音乐会/讲座</td>
+                            <td data-label="服务说明与核心价值" class="px-6 py-4 text-gray-600">
+                                从场地精准对接到活动流程管理、专业宣传品设计与摄影摄像，打造高品质个人活动（专业服务费。差旅、住宿及第三方执行费用另计。）
+                            </td>
+                            <td data-label="单价（USD）" class="px-6 py-4 whitespace-nowrap text-gray-600 font-medium">
+                                $4900-9070 USD / 次
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition duration-150">
+                            <td data-label="服务项目" class="px-6 py-4 font-medium text-gray-900 whitespace-normal">国际标准简历设计</td>
+                            <td data-label="服务说明与核心价值" class="px-6 py-4 text-gray-600">
+                                符合国际审美的专业英文排版简历设计（专业服务费。差旅、住宿及第三方执行费用另计。）
+                            </td>
+                            <td data-label="单价（USD）" class="px-6 py-4 whitespace-nowrap text-gray-600 font-medium">
+                                $1,290 USD / 套
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition duration-150">
+                            <td data-label="服务项目" class="px-6 py-4 font-medium text-gray-900 whitespace-normal">艺术新闻稿撰写与发布</td>
+                            <td data-label="服务说明与核心价值" class="px-6 py-4 text-gray-600">
+                                专业中/英文新闻稿撰写，并推荐至合适的国内外媒体渠道进行发布（专业服务费。差旅、住宿及第三方执行费用另计。）
+                            </td>
+                            <td data-label="单价（USD）" class="px-6 py-4 whitespace-nowrap text-gray-600 font-medium">
+                                $2,350-6,500 USD / 次
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition duration-150">
+                            <td data-label="服务项目" class="px-6 py-4 font-medium text-gray-900 whitespace-normal">国际NGO推荐信（501c3标准）</td>
+                            <td data-label="服务说明与核心价值" class="px-6 py-4 text-gray-600">
+                                根据您的背景与需求，定制具有说服力的背书内容，并出具符合规范的签字文书（专业服务费。差旅、住宿及第三方执行费用另计。）
+                            </td>
+                            <td data-label="单价（USD）" class="px-6 py-4 whitespace-nowrap text-gray-600 font-medium">
+                                $8,090 USD / 封
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition duration-150">
+                            <td data-label="服务项目" class="px-6 py-4 font-medium text-gray-900 whitespace-normal">国际发展潜力梳理报告</td>
+                            <td data-label="服务说明与核心价值" class="px-6 py-4 text-gray-600">
+                                详尽分析您的条件与国际发展要求的匹配度，包含个性化推荐方向与详细资料准备清单（专业服务费。差旅、住宿及第三方执行费用另计。）
+                            </td>
+                            <td data-label="单价（USD）" class="px-6 py-4 whitespace-nowrap text-gray-600 font-medium">
+                                $2,970 USD / 份
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition duration-150">
+                            <td data-label="服务项目" class="px-6 py-4 font-medium text-gray-900 whitespace-normal">专家团队材料对接服务</td>
+                            <td data-label="服务说明与核心价值" class="px-6 py-4 text-gray-600">
+                                推荐经验丰富的专业顾问团队，并协助进行初步的规划材料传递与沟通（专业服务费。差旅、住宿及第三方执行费用另计。）
+                            </td>
+                            <td data-label="单价（USD）" class="px-6 py-4 whitespace-nowrap text-gray-600 font-medium">
+                                $4,960 USD / 次
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Cases Section -->
+    <section id="success-cases" class="py-20" style="background-image: url('https://tagvault.org/wp-content/uploads/2024/01/Facts-About-Artists-List.jpg'); background-size: cover; background-position: center; background-attachment: fixed; position: relative;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255, 255, 255, 0.92); z-index: 0;"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="position: relative; z-index: 1;">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">成功<span class="text-indigo-600">案例展示</span></h2>
+                <div class="w-24 h-1 bg-indigo-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    了解臻梦文化 (ZENDREAMS) 如何帮助艺术家们在国际舞台上取得卓越成就。
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-10">
+                <!-- Case 1: Vivien.L -->
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-105">
+                    <div class="p-6 md:p-8">
+                        <div class="flex flex-col md:flex-row md:items-start">
+                            <img src="https://virtuogenix.online/wp-content/uploads/2023/03/virtuogenix-online_vivien-l_musician_zhuowen-liang_interview_03.jpg" alt="音乐家 Vivien.L" class="w-full md:w-40 h-auto md:h-40 object-cover rounded-lg mb-4 md:mb-0 md:mr-6 shadow-md">
+                            <div class="flex-1">
+                                <h3 class="text-xl font-bold text-indigo-700 mb-1">案例一：音乐家 Vivien.L</h3>
+                                <p class="text-sm text-gray-500 mb-3">支持方：<span class="font-semibold text-gray-700">臻梦文化 (ZENDREAMS)</span></p>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    臻梦文化团队帮助音乐家Vivien.L在纽约成功举办“Vivien.L: DANCE TO THE HEARTBREAK”个人音乐会，并为其争取多次包括“兔年迎春庆典”、“海纳百川高校校友联合野餐会”等多个演出机会。同时还帮助Vivien.L撰写、发表新闻若干篇，获得知名文化公益机构推荐信一封，全力助力其申请O-1 Visa。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 2: Ah Moon -->
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-105">
+                    <div class="p-6 md:p-8">
+                        <div class="flex flex-col md:flex-row md:items-start">
+                            <img src="https://alchetron.com/cdn/ah-moon-7aab8cb5-daf2-4622-99ae-8bde14e0173-resize-750.jpg" alt="著名歌手 Ahmoon" class="w-full md:w-40 h-auto md:h-40 object-cover rounded-lg mb-4 md:mb-0 md:mr-6 shadow-md">
+                            <div class="flex-1">
+                                <h3 class="text-xl font-bold text-indigo-700 mb-1">案例二：著名歌手 Ahmoon</h3>
+                                <p class="text-sm text-gray-500 mb-3">支持方：<span class="font-semibold text-gray-700">臻梦文化 (ZENDREAMS)</span></p>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    臻梦文化团队协助著名歌手Ah Moon运营打造社交媒体平台，各平台粉丝数量总数超300万，同时还为其争取了包括“联合国慈善晚宴”在内的多个演出机会，丰富了其演出经历，为申请O-1 Visa强力护航。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terms Section -->
+    <section class="py-16 bg-gray-50"> <!-- Kept this section plain as it's text-heavy -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">合作条款与<span class="text-indigo-600">重要说明</span></h2>
+                <div class="w-24 h-1 bg-indigo-600 mx-auto mb-6"></div>
+            </div>
+            
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <div class="p-6">
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">（一）服务周期与启动</h3>
+                            <p class="text-gray-600">
+                                所有标准服务套餐均自双方正式签约之日起开始计算服务周期，常规套餐服务周期为12个月，特定项目（如特定规划类、定制类）的服务周期以合同约定为准。服务周期结束后，客户可根据需求选择续约服务。
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">（二）成果保证与免责说明</h3>
+                            <p class="text-gray-600">
+                                Zen Dreams (臻梦国际) 承诺以最高的专业水准为客户提供咨询、材料准备、资源对接、申报辅导等服务。我们将竭尽所能，运用我们的专业知识和行业资源，助力客户达成目标。然而，由于国际赛事获奖、媒体最终刊发、国际发展项目审批等结果均涉及第三方评审机构、媒体编辑决策或政府相关部门的独立判断，本公司不对这些最终结果作出绝对的承诺或保证。我们会明确告知各项服务的可能性与风险，并与客户共同努力争取最佳结果。
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">（三）保密协议</h3>
+                            <p class="text-gray-600">
+                                我们高度重视并严格保障客户的个人隐私信息、艺术创作资料以及所有商业敏感信息的安全。在合作开始前，双方将签署具有法律约束力的保密协议，确保客户信息不被泄露或用于约定合作范围之外的任何用途。
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">（四）知识产权归属</h3>
+                            <p class="text-gray-600">
+                                在服务过程中，由本公司为客户原创撰写的所有文案内容（如新闻稿、推荐信初稿、简历文本等），其最终知识产权在客户付清全款后归客户所有。然而，Zen Dreams (臻梦国际) 保留在其官方宣传材料、网站案例展示等市场推广活动中，引用不涉及客户核心隐私或商业机密的合作案例与成果的权利，例如提及合作艺术家的姓名（需获客户同意）、参与的公开活动或获得的公开奖项等。
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">（五）退款与服务中止</h3>
+                            <p class="text-gray-600">
+                                若客户在服务合同履行期间单方面主动要求中止服务，本公司将根据已提供的服务阶段和实际发生的运营成本进行核算，在扣除已发生费用和必要成本后，将未执行部分的剩余款项按比例退还给客户（定金部分通常不予退还，具体以合同约定为准）。如因不可抗力因素（如重大自然灾害、战争、政府政策重大调整等）导致服务无法继续，双方应友好协商，寻求延期履行或根据实际情况协商终止合同及后续处理事宜。
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">（六）付款方式</h3>
+                            <p class="text-gray-600">
+                                为确保服务的顺利启动与持续推进，客户在合同签订后，需首先支付项目总费用的30%作为定金。剩余款项将根据合同约定的服务里程碑分阶段支付。此支付结构旨在保障双方权益，并与服务进度紧密关联。对于特殊或大额定制项目，付款方式可双方另行协商确定。
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">（七）争议解决</h3>
+                            <p class="text-gray-600">
+                                若双方在履行本合同过程中产生任何争议或分歧，应首先本着友好合作的精神通过协商方式寻求解决方案。如果通过友好协商仍无法达成一致，任何一方均有权将该争议提交至合同签订地或被告方所在地拥有合法管辖权的人民法院提起诉讼，通过法律途径解决。
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">（八）其他未尽事宜</h3>
+                            <p class="text-gray-600">
+                                本服务说明构成双方合作意向的基础。具体权利与义务以双方正式签署的合作合同为准。合同自双方授权代表签字并加盖公章（如有）之日起正式生效。合同一式两份，双方各执一份，两份文本具有同等法律效力。对于本合同未能详尽涵盖的事宜，双方可在协商一致的基础上另行签订补充协议。任何补充协议一经签署，即构成本合同不可分割的组成部分，并与本合同具有同等法律约束力。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 text-white" style="background-image: url('https://cdn8.dissolve.com/p/D985_58_196/D985_58_196_1200.jpg'); background-size: cover; background-position: center; position: relative;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(49, 46, 129, 0.7); /* Dark indigo overlay for text readability */ z-index: 0;"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center" style="position: relative; z-index: 1;">
+            <h2 class="text-3xl font-bold mb-6">让您的艺术才华在全球舞台绽放<span class="text-yellow-300">万丈光芒</span>！</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">
+                我们期待与您并肩合作，共同规划并实现您艺术生涯的每一个重要里程碑，直至您在全球的艺术梦想圆满达成。
+            </p>
+            <a href="#about" class="bg-white text-indigo-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition duration-300 shadow-lg">
+                立即开启您的辉煌艺术篇章
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-6 md:mb-0">
+                    <!-- Removed Zen Dreams Logo -->
+                    <span class="font-bold text-xl">Zen Dreams</span>
+                </div>
+                
+                <!-- Removed social media icons -->
+                
+                <div class="text-gray-400 text-sm">
+                    © Zen Dreams (臻梦国际) 2025. 保留所有权利.
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+                <!-- Placeholder text removed as per request -->
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-indigo-600 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:bg-indigo-700 transition duration-300 hidden">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // Calculate offset considering the fixed navbar height (16 * 4 = 64px, plus some buffer like 16px -> 80px)
+                    const navbarHeight = document.querySelector('nav').offsetHeight || 64; // Fallback if nav not found or height is 0
+                    const offsetPosition = targetElement.offsetTop - navbarHeight - 16; // Additional 16px buffer
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Package card hover effect (Original JS, adjusted for better interaction with pre-scaled card)
+        const packageCards = document.querySelectorAll('.package-card');
+        
+        packageCards.forEach(card => {
+            const originalTransform = card.style.transform; // Store original transform if any (like scale-105)
+            
+            card.addEventListener('mouseenter', function() {
+                if (this.classList.contains('scale-105')) { // Check if it's the "most popular" card
+                     this.style.transform = 'scale(1.07)'; // Slightly larger scale for pre-scaled card
+                } else {
+                    this.style.transform = 'scale(1.03)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                 if (this.classList.contains('scale-105')) {
+                    this.style.transform = 'scale(1.05)'; // Return to its original popular scale
+                 } else {
+                    this.style.transform = ''; // Return to no scale or original inline style if any
+                 }
+            });
+        });
+    </script>
+</body>
+</html>
